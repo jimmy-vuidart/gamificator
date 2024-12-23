@@ -1,0 +1,23 @@
+/*
+* Main content
+*/
+ #main {
+  padding: 20px;
+  background-color: #EEEEEE;
+  min-height: 100%;
+ }
+
+  #main .page-header {
+    margin-top: 20px;
+    border-bottom: 1px solid #CCCCCC;
+  }
+
+  #main .level-details {
+    height: 200px;
+  }
+
+    #main .level-details .level-details-title {
+      font-weight: bold;
+      font-size: 4em;
+    }
+

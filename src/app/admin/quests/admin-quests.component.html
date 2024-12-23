@@ -1,0 +1,28 @@
+<div id="quest-list">
+
+    <!-- Liste de quêtes d'équipe -->
+    <div class="row">
+        <h3>Quêtes d'équipe</h3>
+
+        <div class="col-md-4" *ngFor="let quest of (teamQuests | async)">
+            <quest-card [quest]="quest" [isAdmin]="true" (completed)="onTeamQuestCompleted(quest)"></quest-card>
+        </div>
+    </div>
+
+    <!-- Liste de quêtes des membres de l'équipe -->
+    <div class="row">
+
+        <h3>Membres de l'équipe</h3>
+
+        <div class="row" *ngFor="let user of usersWithQuests">
+            <div class="col-md-12">
+                <h5>{{user.name}}</h5>
+                <div class="col-md-4" *ngFor="let quest of user.loadedQuests">
+                    <quest-card [quest]="quest" [isAdmin]="true" (completed)="onQuestCompleted(quest, user)"></quest-card>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,75 @@
+<div id="quest-list">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header" data-background-color="green">
+                    <h4 class="title">Ecriture d'une quête</h4>
+                </div>
+                <div class="card-content">
+
+                    <form name="quest-form">
+
+                        <div class="form-group">
+                            <label for="inputTitle" class="col-sm-2 control-label">Titre</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="title" class="form-control" id="inputTitle" placeholder="Titre" [(ngModel)]="newQuest.title">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputExp" class="col-sm-2 control-label">Expérience</label>
+                            <div class="col-sm-10">
+                                <input type="number" name="experience" class="form-control" id="inputExp" placeholder="Experience" [(ngModel)]="newQuest.experience">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-2">
+                                <label class="radio-inline">
+                                    <input type="radio" name="inlineRadioOptions" [(ngModel)]="isForTeam" id="inlineRadio1" value="true"> Pour l'équipe
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="inlineRadioOptions" [(ngModel)]="isForTeam" id="inlineRadio2" value="false"> Pour un membre
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group" *ngIf="isForTeam == 'false'">
+                            <label for="inputMember" class="col-sm-2 control-label">Ressource :</label>
+                            <div class="col-sm-10">
+                                <select name="member" class="form-control" id="inputMember" placeholder="Membre" [(ngModel)]="newQuest.user">
+                                    <option *ngFor="let member of teamMembers | async" [value]="member.$key">{{member.name}}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputCategory" class="col-sm-2 control-label">Compétence :</label>
+                            <div class="col-sm-10">
+                                <select name="category" class="form-control" id="inputCategory" placeholder="Catégorie" [(ngModel)]="newQuest.skill">
+                                    <option *ngFor="let skill of skills" [value]="skill.$key">{{skill.name}}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" [disabled]="sendInProgress" class="btn btn-default" (click)="postQuest()">Poster</button>
+                            </div>
+                        </div>
+
+                        <!--<div>-->
+                        <!--<h5>Debug</h5>-->
+                        <!--<pre>{{teamMembers | async | json}}</pre>-->
+                        <!--<pre>{{skills | async | json}}</pre>-->
+                        <!--<pre>{{newQuest | json}}</pre>-->
+                        <!--</div>-->
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

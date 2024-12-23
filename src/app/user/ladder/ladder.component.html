@@ -1,0 +1,67 @@
+<div id="ladder">
+    <div class="row">
+        <div class="col-lg-12 col-md-12">
+            <div class="card">
+
+                <div class="card-header" data-background-color="orange">
+                    <h4 class="title">Classements globaux</h4>
+                    <p class="category">{{(userCurrentTeam | async)?.$key}}</p>
+                </div>
+
+                <div class="card-content table-responsive">
+                    <table class="table table-hover">
+                        <thead class="text-warning">
+                        <tr>
+                            <th>Equipe</th>
+                            <th>Niveau</th>
+                            <th>Expérience totale</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let team of (teams | async)" [ngClass]="{active: team.$key == teamName}">
+                            <td>{{team.$key}}</td>
+                            <td>{{library.level(team.experience)}}</td>
+                            <td>{{team.experience || 0}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <span class="tim-note">Par compétence</span>
+
+    <div class="row">
+        <div class="col-lg-4 col-md-4" *ngFor="let skill of skills | async">
+            <div class="card">
+                <div class="card-header" data-background-color="orange">
+                    <h4 class="title">{{skill.name}}</h4>
+                    <p class="category">{{library.keys(skill.teams).length}} equipes participantes</p>
+                </div>
+                <div class="card-content table-responsive">
+                    <table class="table table-hover">
+                        <thead class="text-warning">
+                        <tr>
+                            <th>Equipe</th>
+                            <th>Niveau</th>
+                            <th>Expérience</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let i of library.keys(skill.teams)" [ngClass]="{active: i == teamName}">
+                            <td>{{i}}</td>
+                            <td>{{library.level(skill.teams[i].experience)}}</td>
+                            <td>{{skill.teams[i].experience}}</td>
+                        </tr>
+                        <tr *ngIf="library.keys(skill.teams).length == 0">
+                            <td colspan="2">Pas d'équipe dans cette compétence</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,31 @@
+<div class="card card-stats card-skill" [ngClass]="{'card-completed':quest.completedOn}">
+
+    <div class="card-header" data-background-color="green">
+        <!--<i class="material-icons">store</i>/-->
+        <!--<img src="/assets/img/skills/{{quest.icon}}">-->
+        <span>{{quest.loadedSkill?.name}}</span>
+    </div>
+
+    <div class="card-content">
+        <p class="category">{{quest.experience}} XP</p>
+        <h3 class="title">{{quest.title}}</h3>
+    </div>
+
+    <div class="card-footer">
+
+        <div class="row">
+
+            <div class="stats col-md-6">
+                <i class="material-icons">date_range</i> {{quest.createdOn | date}}
+            </div>
+
+            <div class="action col-md-6" *ngIf="(!quest.completedOn && isAdmin)">
+                <button class="btn" [disabled]="quest.completedOn" (click)="onResolveClick(quest)">Déclarer réussie</button>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+

@@ -1,0 +1,19 @@
+exports = module.exports = require("../../../../node_modules/css-loader/lib/css-base.js")();
+// imports
+
+
+// module
+exports.push([module.id, ".avatar {\n  z-index: 100;\n  text-align: center; }\n  .avatar img {\n    width: 260px;\n    height: 260px; }\n  .avatar .user-name {\n    max-width: 260px;\n    position: relative;\n    top: -50px;\n    color: white;\n    font-size: 25px;\n    text-shadow: 2px 2px black; }\n  .avatar .team-name {\n    max-width: 260px;\n    position: relative;\n    top: -45px;\n    color: white;\n    font-size: 15px;\n    text-shadow: 2px 2px black; }\n\n.avatar:after {\n  content: '';\n  position: absolute;\n  bottom: 0;\n  right: 10%;\n  height: 1px;\n  width: 80%;\n  background-color: rgba(180, 180, 180, 0.3); }\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+
+//////////////////
+// WEBPACK FOOTER
+// ./src/shared/components/sidebar/sidebar.component.scss
+// module id = 270
+// module chunks = 1
