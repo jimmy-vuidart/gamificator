@@ -5,18 +5,19 @@ import { QuestService } from '../../../shared/services/quest.service'
 import { SkillService } from '../../../shared/services/skill.service'
 import { TeamService } from '../../../shared/services/team.service'
 import { UserService } from '../../../shared/services/user.service'
-import { NgFor, AsyncPipe } from '@angular/common';
+import { NgFor, AsyncPipe, JsonPipe } from '@angular/common'
 import { QuestCardComponent } from '../../../shared/components/quest-card/quest-card.component';
 
 @Component({
     selector: 'admin-quests',
     templateUrl: 'admin-quests.component.html',
     styleUrls: ['admin-quests.component.scss'],
-    imports: [
-        NgFor,
-        QuestCardComponent,
-        AsyncPipe,
-    ],
+  imports: [
+    NgFor,
+    QuestCardComponent,
+    AsyncPipe,
+    JsonPipe,
+  ],
 })
 export class AdminQuestComponent {
   teamName
@@ -40,9 +41,7 @@ export class AdminQuestComponent {
         this.usersWithQuests = []
         LibraryService.forEachKey(members, member => {
           this.questService.getUserQuests(member.$key).pipe(
-            map(LibraryService.outputMap('Before adding loaded skills')),
             map(LibraryService.forEachKeyMap(quest => this.skillService.getSkill(quest.skill).subscribe(skill => quest.loadedSkill = skill))),
-            map(LibraryService.outputMap('After adding loaded skills')),
           )
             .subscribe(quests => {
               member.loadedQuests = quests

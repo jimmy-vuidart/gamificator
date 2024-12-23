@@ -1,35 +1,37 @@
 import { Injectable } from '@angular/core'
-import { AngularFireAuth } from '@angular/fire/compat/auth'
-import { AngularFireDatabase } from '@angular/fire/compat/database'
+import { Auth, authState, User } from '@angular/fire/auth'
+import { Database, equalTo, list, listVal, objectVal, orderByChild, query, ref, set } from '@angular/fire/database'
 import { map, mergeMap, Observable, of, switchMap, take } from 'rxjs'
 import { LibraryService } from './library.service'
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
+  authState$: Observable<User | null>
 
-  constructor(private database: AngularFireDatabase, private auth: AngularFireAuth) {
+  constructor(private database: Database, private auth: Auth) {
+    this.authState$ = authState(this.auth)
   }
 
   public getUserKey() {
-    return this.auth.authState
+    return this.authState$
       .pipe(map(state => state?.uid))
   }
 
   public getUserTeamNameObservable() {
-    return this.auth.authState
+    return this.authState$
       .pipe(mergeMap((state) => {
-        return this.database.object('/users/' + state?.uid).valueChanges()
+        return objectVal<any>(ref(this.database, `/users/${state?.uid}`))
           .pipe(map((user: any) => user?.team))
       }))
   }
 
   public getCurrentUser(): Observable<any> {
-    return this.auth.authState.pipe(
+    return this.authState$.pipe(
       switchMap((state) => {
         if (state) {
-          return this.database.object('/users/' + state.uid).valueChanges()
+          return objectVal<any>(ref(this.database, `/users/${state.uid}`), {keyField: '$key'})
         } else {
           return of(null)
         }
@@ -37,7 +39,7 @@ export class UserService {
   }
 
   public getUser(userId) {
-    return this.database.object('/users/' + userId)
+    return objectVal<any>(ref(this.database, '/users/' + userId))
   }
 
   public isCurrentUserAdmin(): Observable<boolean> {
@@ -57,7 +59,7 @@ export class UserService {
 
   public getUserTeam(): Observable<any> {
     return this.getUserTeamNameObservable().pipe(switchMap((teamName) => {
-      return this.database.object('/teams/' + teamName).valueChanges()
+      return objectVal(ref(this.database, `/teams/${teamName}`))
     }))
   }
 
@@ -66,9 +68,7 @@ export class UserService {
     return new Promise((resolve, reject) => {
       this.getUserTeamName().then((teamName) => {
         // Fetching users
-        this.database
-          .list('/users', ref => ref.orderByChild('team').equalTo(teamName))
-          .valueChanges()
+        listVal<any>(query(ref(this.database, '/users'), orderByChild('team'), equalTo(teamName)))
           .subscribe((teamMembers) => {
             resolve(teamMembers)
           })
@@ -79,13 +79,13 @@ export class UserService {
   public toggleAdmin() {
     let userSub = this.getCurrentUser()
     userSub.pipe(take(1)).subscribe((user) => {
-      this.database.object('/users/' + user.$key).update({admin: !user.admin})
+      set(ref(this.database, `/users/${user.$key}`), {admin: !user.admin})
       window.location.reload()
     })
   }
 
   public getUserXP(userId: string, skill?) {
-    return this.database.list('/users/' + userId + '/quests').valueChanges()
+    return listVal(ref(this.database, `/users/${userId}/quests`))
       .pipe(map(quests => {
         let experience = 0
         LibraryService.forEachKey(quests, quest => {
@@ -98,7 +98,3 @@ export class UserService {
       }))
   }
 }
-
-
-// WEBPACK FOOTER //
-// ./src/shared/services/user.service.ts

@@ -1,21 +1,23 @@
 import { Injectable } from '@angular/core'
-import { AngularFireAuth } from '@angular/fire/compat/auth'
-import { map } from 'rxjs'
+import { Auth, authState, signInWithEmailAndPassword, User } from '@angular/fire/auth'
+import { map, Observable } from 'rxjs'
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SecurityService {
+  authState$: Observable<User | null>
 
-  constructor(private auth: AngularFireAuth) {
+  constructor(private auth: Auth) {
+    this.authState$ = authState(this.auth)
   }
 
   public isLoggedIn() {
-    return this.auth.authState.pipe(map((state) => !!state))
+    return this.authState$.pipe(map((state) => !!state))
   }
 
   public login(email: string, password: string) {
-    return this.auth.signInWithEmailAndPassword(email, password)
+    return signInWithEmailAndPassword(this.auth, email, password)
   }
 
   public logout() {

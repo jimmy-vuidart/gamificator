@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { AngularFireDatabase } from '@angular/fire/compat/database'
+import { Database, equalTo, limitToLast, list, listVal, object, orderByChild, push, query, ref, set } from '@angular/fire/database'
 import { map, Observable, of, switchMap, take } from 'rxjs'
 import { LibraryService } from './library.service'
 import { UserService } from './user.service'
@@ -19,36 +19,36 @@ export interface IQuest {
 })
 export class QuestService {
 
-  constructor(private database: AngularFireDatabase,
+  constructor(private database: Database,
               private userService: UserService) {
   }
 
   public postQuest(quest: IQuest) {
     quest.createdOn = Date.now()
     if (quest.user) {
-      return this.database.list('/users/' + quest.user + '/quests').push(quest)
+      return push(ref(this.database, `/users/${quest.user}/quests`), quest)
     } else {
       return this.userService.getUserTeamName().then((teamName) => {
-        return this.database.list('/teams/' + teamName + '/quests').push(quest)
+        return push(ref(this.database, `/teams/${teamName}/quests`), quest)
       })
     }
   }
 
   private incrementTeamXp(quest: IQuest, teamName: string) {
-    let teamXpObs = this.database.object<any>('/teams/' + teamName + '/experience')
-    teamXpObs.snapshotChanges().pipe(take(1)).subscribe(exp => teamXpObs.set(exp.payload.val() + quest.experience))
+    let teamXpObs = object(ref(this.database, `/teams/${teamName}/experience`))
+    teamXpObs.pipe(take(1)).subscribe(exp => set(exp.snapshot.ref, exp.snapshot.val() + quest.experience))
 
-    let teamSkillObs = this.database.object<any>('/teams/' + teamName + '/skills/' + quest.skill + '/experience')
-    teamSkillObs.snapshotChanges().pipe(take(1)).subscribe(exp => teamSkillObs.set(exp.payload.val() + quest.experience))
+    let teamSkillObs = object(ref(this.database, `/teams/${teamName}/skills/${quest.skill}/experience`))
+    teamSkillObs.pipe(take(1)).subscribe(exp => set(exp.snapshot.ref, exp.snapshot.val() + quest.experience))
 
-    let skillTeamObs = this.database.object<any>('/skills/' + quest.skill + '/teams/' + teamName + '/experience')
-    skillTeamObs.snapshotChanges().pipe(take(1)).subscribe(exp => skillTeamObs.set(exp.payload.val() + quest.experience))
+    let skillTeamObs = object(ref(this.database, `/skills/${quest.skill}/teams/${teamName}/experience`))
+    skillTeamObs.pipe(take(1)).subscribe(exp => set(exp.snapshot.ref, exp.snapshot.val() + quest.experience))
   }
 
   public completeTeamQuest(quest: IQuest, teamName: any) {
     console.debug('QuestService > completeTeamQuest', quest, teamName)
 
-    this.database.object('/teams/' + teamName + '/quests/' + quest.$key + '/completedOn').set(Date.now())
+    set(ref(this.database, '/teams/' + teamName + '/quests/' + quest.$key + '/completedOn'), Date.now())
 
     this.incrementTeamXp(quest, teamName)
   }
@@ -61,23 +61,21 @@ export class QuestService {
     // Writing everywhere to ease reading
     this.incrementTeamXp(quest, user.team)
 
-    this.database.object('/users/' + user.$key + '/quests/' + quest.$key + '/completedOn').set(Date.now())
+    set(ref(this.database, `/users/${user.$key}/quests/${quest.$key}/completedOn`), Date.now())
 
-    let xpObs = this.database.object<any>('/users/' + user.$key + '/experience')
-    xpObs.snapshotChanges().pipe(take(1)).subscribe(exp => xpObs.set(exp.payload.val() + quest.experience))
+    let userXp$ = object(ref(this.database, `/users/${user.$key}/experience`))
+    userXp$.pipe(take(1)).subscribe(xp => set(xp.snapshot.ref, xp.snapshot.val() + quest.experience))
 
-    let skillObs = this.database.object<any>('/users/' + user.$key + '/skills/' + quest.skill + '/experience')
-    skillObs.snapshotChanges().pipe(take(1)).subscribe(exp => skillObs.set(exp.payload.val() + quest.experience))
+    let skillXp$ = object(ref(this.database, `/users/${user.$key}/skills/${quest.skill}/experience`))
+    skillXp$.pipe(take(1)).subscribe(skillXp => set(skillXp.snapshot.ref, skillXp.snapshot.val() + quest.experience))
 
-    let skillXpObs = this.database.object<any>('/skills/' + quest.skill + '/teams/' + user.team + '/members/' + user.name + '/experience')
-    skillXpObs.snapshotChanges().pipe(take(1)).subscribe(exp => skillXpObs.set(exp.payload.val() + quest.experience))
+    let teamUserXp$ =  object(ref(this.database, `/skills/${quest.skill}/teams/${user.team}/members/${user.name}/experience`))
+    teamUserXp$.pipe(take(1)).subscribe(skillXp => set(skillXp.snapshot.ref, skillXp.snapshot.val() + quest.experience))
   }
 
   public computeTotalCategoryXP(userId: string, skillId: any) {
     return new Promise((resolve, reject) => {
-      this.database
-        .list('/users/' + userId + '/quests', ref => ref.orderByChild('skill').equalTo(skillId))
-        .valueChanges()
+      listVal<any>(query(ref(this.database, `/users/${userId}/quests`), orderByChild('skill'), equalTo(skillId)))
         .subscribe((quests: any) => {
           let result = 0
           for (let i in quests) {
@@ -89,7 +87,7 @@ export class QuestService {
   }
 
   public getTeamQuests(teamName: string): Observable<any[]> {
-    return this.database.list('/teams/' + teamName + '/quests').valueChanges()
+    return listVal<any>(ref(this.database, `/teams/${teamName}/quests`))
   }
 
   public getFullTeamQuests(teamName: string): Observable<any> {
@@ -105,10 +103,9 @@ export class QuestService {
   }
 
   public getTeamMembersQuests(teamName: string) {
-    return this.database
-      .list('/users/', ref => ref.orderByChild('team').equalTo(teamName))
-      .valueChanges()
-      .pipe(map((users: any) => {
+    return listVal<any>(query(ref(this.database, '/users/'), orderByChild('team'), equalTo(teamName)))
+      .pipe(
+        map((users: any) => {
         let quests: any[] = []
 
         LibraryService.forEachKey(users, (user: { quests: any; name: any }) => {
@@ -126,7 +123,7 @@ export class QuestService {
   public getUserQuests(userId: string) {
     console.debug('QuestService > getUserQuests', userId)
 
-    return this.database.list('/users/' + userId + '/quests').valueChanges()
+    return listVal(ref(this.database, `/users/${userId}/quests`), {keyField: '$key'})
   }
 
   public getUserQuestsByCategory(userId: any, category: number) {
@@ -143,7 +140,7 @@ export class QuestService {
 
   public getUserLatestQuests(userId: string) {
     return new Promise((resolve, reject) => {
-      this.database.list('/users/' + userId + '/quests', ref => ref.orderByChild('createdOn').limitToLast(5)).valueChanges().subscribe(quests => resolve(quests))
+      listVal<any>(query(ref(this.database, `/users/${userId}/quests`), orderByChild('createdOn'), limitToLast(5))).subscribe(quests => resolve(quests))
     })
   }
 }

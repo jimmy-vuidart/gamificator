@@ -32,7 +32,7 @@ export class SidebarComponent implements OnInit {
     this.menuService.getMenu().subscribe(menu => {
       this.menuItems = menu
 
-      $.getScript('../../assets/js/sidebar-moving-tab.js')
+      $.getScript('/assets/js/sidebar-moving-tab.js')
       setTimeout(() => {
         this.moveToActive()
       }, 2000)

@@ -2,7 +2,6 @@
 import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
 import { EmailAuthProvider } from '@angular/fire/auth'
-import { AngularFireModule } from '@angular/fire/compat'
 import { RouterModule } from '@angular/router'
 import { AdminAuthGuard } from './admin-auth-guard.service'
 import { AuthGuard } from './auth-guard.service'
@@ -34,7 +33,6 @@ const firebaseAuthConfig = {
   imports: [
     CommonModule,
     RouterModule,
-    AngularFireModule.initializeApp(firebaseConfig),
   ],
   providers: [
     LibraryService,

@@ -1,7 +1,6 @@
 import { ApplicationConfig, importProvidersFrom, provideZoneChangeDetection } from '@angular/core'
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app'
 import { getAuth, provideAuth } from '@angular/fire/auth'
-import { AngularFireModule } from '@angular/fire/compat'
 import { getDatabase, provideDatabase } from '@angular/fire/database'
 import { provideRouter } from '@angular/router'
 
@@ -19,8 +18,6 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({eventCoalescing: true}),
     provideRouter(routes),
-
-    importProvidersFrom([AngularFireModule.initializeApp(firebaseConfig)]),
 
     provideFirebaseApp(() => initializeApp(firebaseConfig)),
     provideDatabase(() => getDatabase()),

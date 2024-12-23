@@ -1,25 +1,21 @@
 import { Injectable } from '@angular/core'
-import { AngularFireAuth } from '@angular/fire/compat/auth'
-import { AngularFireDatabase } from '@angular/fire/compat/database'
+import { Database, equalTo, listVal, objectVal, orderByChild, query, ref } from '@angular/fire/database'
 import { map, Observable, of, switchMap, take } from 'rxjs'
 import { LibraryService } from './library.service'
 import { QuestService } from './quest.service'
-import { SkillService } from './skill.service'
 import { UserService } from './user.service'
 
 @Injectable({
   providedIn: 'root'
 })
 export class TeamService {
-  constructor(private skillService: SkillService,
-              private questService: QuestService,
-              private database: AngularFireDatabase,
-              private auth: AngularFireAuth,
+  constructor(private questService: QuestService,
+              private database: Database,
               private userService: UserService) {
   }
 
   public getTeams(): Observable<any[]> {
-    return this.database.list('/teams').valueChanges()
+    return listVal<any>(ref(this.database, '/teams'), {keyField: '$key'})
   }
 
   public getCurrentTeam(): Observable<any> {
@@ -30,7 +26,6 @@ export class TeamService {
   }
 
   public getTeamsXP(skill?: any, includeZero?: any): Observable<any[]> {
-
     if (includeZero == null) {
       includeZero = true
     }
@@ -68,15 +63,12 @@ export class TeamService {
   public getTeam(teamName: any): Observable<any> {
     console.info('TeamService > getTeam(', teamName, ')')
 
-    return this.database.object('/teams/' + teamName).valueChanges()
+    return objectVal<any>(ref(this.database, `/teams/${teamName}`))
   }
 
   public getTeamMembers(teamName: string): Observable<any> {
     console.info('TeamService > getTeamMembers(', teamName, ')')
-
-    return this.database
-      .list('/users', ref => ref.orderByChild('team').equalTo(teamName))
-      .valueChanges()
+    return listVal<any>(query(ref(this.database, '/users'), orderByChild('team'), equalTo(teamName)), {keyField: '$key'})
       .pipe(
         map(users => users.filter((user: any) => !user.admin)),
       )

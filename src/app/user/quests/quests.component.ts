@@ -44,10 +44,14 @@ export class QuestComponent {
 
     this.userService.getUserKey().subscribe((userId) => {
       this.projectQuests = this.questService.getUserQuestsByCategory(userId, 1)
-        .pipe(map(LibraryService.forEachKeyMap(quest => this.skillService.getSkill(quest.skill).subscribe(skill => quest.loadedSkill = skill))))
+        .pipe(
+          map(LibraryService.forEachKeyMap(quest => this.skillService.getSkill(quest.skill).subscribe(skill => quest.loadedSkill = skill)))
+        )
 
       this.skillQuests = this.questService.getUserQuestsByCategory(userId, 2)
-        .pipe(map(LibraryService.forEachKeyMap(quest => this.skillService.getSkill(quest.skill).subscribe(skill => quest.loadedSkill = skill))))
+        .pipe(
+          map(LibraryService.forEachKeyMap(quest => this.skillService.getSkill(quest.skill).subscribe(skill => quest.loadedSkill = skill)))
+        )
 
     })
 

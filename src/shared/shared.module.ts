@@ -1,7 +1,5 @@
 // Must export the config
 import { NgModule } from '@angular/core'
-import { AngularFireAuthModule } from '@angular/fire/compat/auth'
-import { AngularFireDatabaseModule } from '@angular/fire/compat/database'
 import { ComponentsModule } from './components/components.module'
 import { ServicesModule } from './services/services.module'
 

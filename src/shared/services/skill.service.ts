@@ -1,20 +1,20 @@
 import { Injectable } from '@angular/core'
-import { AngularFireDatabase } from '@angular/fire/compat/database'
+import { Database, listVal, objectVal, ref } from '@angular/fire/database'
 import { Observable } from 'rxjs'
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SkillService {
-  constructor(private database: AngularFireDatabase) {
+  constructor(private database: Database) {
   }
 
   public getSkills(): Observable<any[]> {
-    return this.database.list('/skills').valueChanges()
+    return listVal<any>(ref(this.database, '/skills'))
   }
 
   public getSkill(skillKey: string): Observable<any> {
-    return this.database.object('/skills/' + skillKey).valueChanges()
+    return objectVal<any>(ref(this.database, `/skills/${skillKey}`), {keyField: '$key'})
   }
 }
 
