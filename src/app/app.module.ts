@@ -1,7 +1,7 @@
+import { HttpClientModule } from '@angular/common/http'
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule, Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {HttpModule} from '@angular/http';
 
 import {RouterModule} from "@angular/router";
 
@@ -48,7 +48,7 @@ import {PersonalComponent} from "./user/personal/personal.component";
         CommonModule,
         BrowserModule,
         FormsModule,
-        HttpModule,
+        HttpClientModule,
         RouterModule.forRoot(appRoutes)
     ],
     providers: [],
