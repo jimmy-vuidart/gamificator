@@ -1,19 +1,2 @@
-exports = module.exports = require("../../../../node_modules/css-loader/lib/css-base.js")();
-// imports
 
-
-// module
-exports.push([module.id, "/*\r\n * Global add-ons\r\n */\n.sub-header {\n  padding-bottom: 10px;\n  border-bottom: 1px solid #eee; }\n\n#home {\n  margin-top: 20px; }\n\n.level {\n  font-size: 55px;\n  text-align: center;\n  margin-top: 5px;\n  margin-bottom: 10px; }\n\n@media (min-width: 768px) {\n  .main {\n    padding-right: 40px;\n    padding-left: 40px; } }\n\n/*\r\n * Placeholder dashboard ideas\r\n */\n.placeholders {\n  margin-bottom: 30px;\n  text-align: center; }\n\n.placeholders h4 {\n  margin-bottom: 0; }\n\n.placeholder {\n  margin-bottom: 20px; }\n\n.placeholder img {\n  display: inline-block;\n  border-radius: 50%; }\n", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-
-//////////////////
-// WEBPACK FOOTER
-// ./src/app/user/home/home.component.scss
-// module id = 261
-// module chunks = 1
+/* * Global add-ons\r */.sub-header {  padding-bottom: 10px;  border-bottom: 1px solid #eee; }#home {  margin-top: 20px; }.level {  font-size: 55px;  text-align: center;  margin-top: 5px;  margin-bottom: 10px; }@media (min-width: 768px) {  .main {    padding-right: 40px;    padding-left: 40px; } }/*\r * Placeholder dashboard ideas\r */.placeholders {  margin-bottom: 30px;  text-align: center; }.placeholders h4 {  margin-bottom: 0; }.placeholder {  margin-bottom: 20px; }.placeholder img {  display: inline-block;  border-radius: 50%; }
