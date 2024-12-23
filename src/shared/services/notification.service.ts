@@ -1,27 +1,24 @@
+import { Injectable } from '@angular/core'
 
-
-import {Injectable} from "@angular/core";
-
-declare var $:any;
+declare var $: any
 
 @Injectable()
 export class NotificationService {
-    public displayNotif(type, from, align, message) {
-        $.notify({
-            icon: "notifications",
-            message: message
+  public displayNotif(type: string, from: string, align: string, message: string) {
+    $.notify({
+      icon: 'notifications',
+      message: message,
 
-        },{
-            type: type,
-            timer: 4000,
-            placement: {
-                from: from,
-                align: align
-            }
-        });
-    }
+    }, {
+      type: type,
+      timer: 4000,
+      placement: {
+        from: from,
+        align: align,
+      },
+    })
+  }
 }
-
 
 
 // WEBPACK FOOTER //

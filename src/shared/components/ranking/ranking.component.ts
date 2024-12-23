@@ -1,27 +1,27 @@
-import {Component, Input} from '@angular/core';
+import { Component, Input } from '@angular/core'
 
 @Component({
-    selector: 'ranking',
-    templateUrl: 'ranking.component.html',
-    styleUrls: ['ranking.component.scss']
+  selector: 'ranking',
+  templateUrl: 'ranking.component.html',
+  styleUrls: ['ranking.component.scss'],
+  standalone: false,
 })
 export class RankingComponent {
-    // Inputs
-    @Input()
-    private rankingName: string;
-    @Input()
-    private spotCurrent: number;
-    @Input()
-    private spotMax: number;
+  // Inputs
+  @Input()
+  rankingName: string
+  @Input()
+  spotCurrent: number
+  @Input()
+  spotMax: number
 
-    // Processing variables
-    private spotPercent: number;
+  // Processing variables
+  spotPercent: number
 
-    private ngOnChanges() {
-        this.spotPercent = Math.floor(this.spotCurrent / this.spotMax * 100);
-    }
+  private ngOnChanges() {
+    this.spotPercent = Math.floor(this.spotCurrent / this.spotMax * 100)
+  }
 }
-
 
 
 // WEBPACK FOOTER //

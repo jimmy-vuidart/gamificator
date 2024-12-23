@@ -1,37 +1,35 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {QuestService} from "../../services/quest.service";
-import {User} from "firebase/app";
-import {UserService} from "../../services/user.service";
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
+import { UserService } from '../../services/user.service'
 
 @Component({
-    selector: 'quest-card',
-    templateUrl: 'quest-card.component.html',
-    styleUrls: ['quest-card.component.scss']
+  selector: 'quest-card',
+  templateUrl: 'quest-card.component.html',
+  styleUrls: ['quest-card.component.scss'],
+  standalone: false,
 })
-export class QuestCardComponent {
-    @Input()
-    public quest: any;
-    @Input()
-    public isAdmin: boolean;
+export class QuestCardComponent implements OnInit {
+  @Input()
+  public quest: any
+  @Input()
+  public isAdmin: boolean
 
-    @Output()
-    public completed: EventEmitter<any> = new EventEmitter();
+  @Output()
+  public completed: EventEmitter<any> = new EventEmitter()
 
-    constructor() {
+  constructor(private userService: UserService) {
 
-    }
+  }
 
-    ngOnInit() {
-        // this.userService.isAdmin()
-        //     .then((isAdmin) => this.isAdmin = isAdmin)
-        //     .catch(() => {});
-    }
+  ngOnInit() {
+    this.userService.isCurrentUserAdmin().subscribe(isAdmin => {
+      this.isAdmin = isAdmin
+    })
+  }
 
-    public onResolveClick() {
-        this.completed.emit();
-    }
+  public onResolveClick() {
+    this.completed.emit()
+  }
 }
-
 
 
 // WEBPACK FOOTER //

@@ -1,20 +1,18 @@
-
-import {Component} from "@angular/core";
+import { Component } from '@angular/core'
 
 @Component({
-    selector: 'layout',
-    templateUrl: 'layout.component.html'
+  selector: 'layout',
+  templateUrl: 'layout.component.html',
+  standalone: false,
 })
 export class LayoutComponent {
 
-    private isLoggedIn = true;
+  private isLoggedIn = true
 
-    constructor() {
+  constructor() {
 
-    }
+  }
 }
-
-
 
 
 // WEBPACK FOOTER //

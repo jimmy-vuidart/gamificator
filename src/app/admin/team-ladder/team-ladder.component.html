@@ -1,64 +1,64 @@
 <div id="team-ladder">
 
-    <div class="row">
-        <div class="col-lg-12 col-md-12">
-            <div class="card">
+  <div class="row">
+    <div class="col-lg-12 col-md-12">
+      <div class="card">
 
-                <div class="card-header" data-background-color="orange">
-                    <h4 class="title">Classements global</h4>
-                    <p class="category">{{teamName}}</p>
-                </div>
-
-                <div class="card-content table-responsive">
-                    <table class="table table-hover">
-                        <thead class="text-warning">
-                        <tr>
-                            <th>Membre</th>
-                            <th>Niveau</th>
-                            <th>Expérience totale</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr *ngFor="let member of (teamMembers | async)">
-                            <td>{{member.name}}</td>
-                            <td>{{member.level}}</td>
-                            <td>{{member.experience || 0}}</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <span class="tim-note">Par compétence</span>
-
-    <div class="row">
-        <div class="col-lg-6 col-md-6" *ngFor="let skill of skills | async">
-            <div class="card">
-                <div class="card-header" data-background-color="orange">
-                    <h4 class="title">{{skill.name}}</h4>
-                </div>
-                <div class="card-content table-responsive">
-                    <table class="table table-hover">
-                        <thead class="text-warning">
-                        <tr>
-                            <th>Membre</th>
-                            <th>Niveau</th>
-                            <th>Expérience totale</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr *ngFor="let i of library.keys(skill.teams[teamName].members)">
-                            <td>{{i}}</td>
-                            <td>{{library.level(skill.teams[teamName].members[i].experience / 500)}}</td>
-                            <td>{{skill.teams[teamName].members[i].experience || 0}}</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+        <div class="card-header" data-background-color="orange">
+          <h4 class="title">Classements global</h4>
+          <p class="category">{{ teamName }}</p>
         </div>
 
+        <div class="card-content table-responsive">
+          <table class="table table-hover">
+            <thead class="text-warning">
+            <tr>
+              <th>Membre</th>
+              <th>Niveau</th>
+              <th>Expérience totale</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let member of (teamMembers | async)">
+              <td>{{ member.name }}</td>
+              <td>{{ member.level }}</td>
+              <td>{{ member.experience || 0 }}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
+  </div>
+
+  <span class="tim-note">Par compétence</span>
+
+  <div class="row">
+    <div class="col-lg-6 col-md-6" *ngFor="let skill of skills | async">
+      <div class="card">
+        <div class="card-header" data-background-color="orange">
+          <h4 class="title">{{ skill.name }}</h4>
+        </div>
+        <div class="card-content table-responsive">
+          <table class="table table-hover">
+            <thead class="text-warning">
+            <tr>
+              <th>Membre</th>
+              <th>Niveau</th>
+              <th>Expérience totale</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let i of library.keys(skill.teams[teamName].members)">
+              <td>{{ i }}</td>
+              <td>{{ library.level(skill.teams[teamName].members[i].experience / 500) }}</td>
+              <td>{{ skill.teams[teamName].members[i].experience || 0 }}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </div>

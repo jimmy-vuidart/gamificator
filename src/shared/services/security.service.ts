@@ -1,27 +1,27 @@
+import { Injectable } from '@angular/core'
+import { AngularFireAuth } from '@angular/fire/compat/auth'
+import { map } from 'rxjs'
 
-
-import {Injectable} from "@angular/core";
-import {AngularFireAuth} from "angularfire2/auth";
 @Injectable()
 export class SecurityService {
 
-    constructor(private auth: AngularFireAuth) {}
+  constructor(private auth: AngularFireAuth) {
+  }
 
-    public isLoggedIn() {
-        return this.auth.authState.map((state) => !!state);
-    }
+  public isLoggedIn() {
+    return this.auth.authState.pipe(map((state) => !!state))
+  }
 
-    public login(email, password) {
-        return this.auth.auth.signInWithEmailAndPassword(email, password);
-    }
+  public login(email: string, password: string) {
+    return this.auth.signInWithEmailAndPassword(email, password)
+  }
 
-    public logout() {
-        let logout = this.auth.auth.signOut();
-        window.location.reload();
-        return logout;
-    }
+  public logout() {
+    let logout = this.auth.signOut()
+    window.location.reload()
+    return logout
+  }
 }
-
 
 
 // WEBPACK FOOTER //

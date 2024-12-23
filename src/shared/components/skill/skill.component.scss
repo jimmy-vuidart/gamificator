@@ -1,15 +1,7 @@
 
-.skill .level {\n  font-size: 35px;\n  text-align: center;\n  margin-top: 5px;\n  margin-bottom: 10px; }\n", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-
-//////////////////
-// WEBPACK FOOTER
-// ./src/shared/components/skill/skill.component.scss
-// module id = 271
-// module chunks = 1
+.skill .level {
+  font-size: 35px;
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}

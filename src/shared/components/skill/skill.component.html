@@ -1,11 +1,11 @@
 <div class="card skill">
-    <div class="card-header" data-background-color="blue">
-        <h4 class="title">{{skill.name}}</h4>
-    </div>
-    <div class="card-content">
-        <div class="level">Niveau {{level}}</div>
-        <div class="ct-chart" #chartTarget id="{{moduleId}}"></div>
-        <div class="level">{{skill.experience % 500}}/500</div>
-        <div class="text-center">Expérience avant le niveau suivant : {{500 - skill.experience % 500}}/500</div>
-    </div>
+  <div class="card-header" data-background-color="blue">
+    <h4 class="title">{{ skill.name }}</h4>
+  </div>
+  <div class="card-content">
+    <div class="level">Niveau {{ level }}</div>
+    <div class="ct-chart" #chartTarget id="{{moduleId}}"></div>
+    <div class="level">{{ skill.experience % 500 }}/500</div>
+    <div class="text-center">Expérience avant le niveau suivant : {{ 500 - skill.experience % 500 }}/500</div>
+  </div>
 </div>

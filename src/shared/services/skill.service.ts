@@ -1,21 +1,20 @@
-import {Injectable} from "@angular/core";
-import {AngularFireAuth} from "angularfire2/auth";
-import {AngularFireDatabase, FirebaseListObservable} from "angularfire2/database";
+import { Injectable } from '@angular/core'
+import { AngularFireDatabase } from '@angular/fire/compat/database'
+import { Observable } from 'rxjs'
 
 @Injectable()
 export class SkillService {
-    constructor(private database: AngularFireDatabase, private auth: AngularFireAuth) {
-    }
+  constructor(private database: AngularFireDatabase) {
+  }
 
-    public getSkills() {
-        return this.database.list("/skills");
-    }
+  public getSkills(): Observable<any[]> {
+    return this.database.list('/skills').valueChanges()
+  }
 
-    public getSkill(skillKey) {
-        return this.database.object("/skills/" + skillKey);
-    }
+  public getSkill(skillKey: string): Observable<any> {
+    return this.database.object('/skills/' + skillKey).valueChanges()
+  }
 }
-
 
 
 // WEBPACK FOOTER //

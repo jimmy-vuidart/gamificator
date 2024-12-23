@@ -1,36 +1,36 @@
 <div id="quest">
 
-    <h2>Quêtes personnelles</h2>
+  <h2>Quêtes personnelles</h2>
 
+  <div>
     <div>
-        <div>
-            <h3>Projets</h3>
+      <h3>Projets</h3>
 
-            <div class="row">
-                <div class="col-md-4" *ngFor="let quest of projectQuests | async">
-                    <quest-card [quest]="quest" [isAdmin]="false"></quest-card>
-                </div>
-            </div>
+      <div class="row">
+        <div class="col-md-4" *ngFor="let quest of projectQuests | async">
+          <quest-card [quest]="quest" [isAdmin]="false"></quest-card>
         </div>
-
-        <div>
-            <h3>Compétences</h3>
-
-            <div class="row">
-                <div class="col-md-4" *ngFor="let quest of skillQuests | async">
-                    <quest-card [quest]="quest" [isAdmin]="false"></quest-card>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
 
     <div>
-        <h2>Quêtes d'équipe</h2>
+      <h3>Compétences</h3>
 
-        <div class="row">
-            <div class="col-md-4" *ngFor="let quest of teamQuests | async">
-                <quest-card [quest]="quest" [isAdmin]="false"></quest-card>
-            </div>
+      <div class="row">
+        <div class="col-md-4" *ngFor="let quest of skillQuests | async">
+          <quest-card [quest]="quest" [isAdmin]="false"></quest-card>
         </div>
+      </div>
     </div>
+  </div>
+
+  <div>
+    <h2>Quêtes d'équipe</h2>
+
+    <div class="row">
+      <div class="col-md-4" *ngFor="let quest of teamQuests | async">
+        <quest-card [quest]="quest" [isAdmin]="false"></quest-card>
+      </div>
+    </div>
+  </div>
 </div>

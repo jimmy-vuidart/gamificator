@@ -1,15 +1,8 @@
 
-.skill {\n  border: 1px solid #EEEEEE; }\n  .skill .skill-title span {\n    margin-left: 20px; }\n", ""]);
+.skill {
+  border: 1px solid #EEEEEE;
+}
 
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-
-//////////////////
-// WEBPACK FOOTER
-// ./src/shared/components/ranking/ranking.component.scss
-// module id = 269
-// module chunks = 1
+.skill .skill-title span {
+  margin-left: 20px;
+}

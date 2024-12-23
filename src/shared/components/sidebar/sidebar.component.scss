@@ -1,15 +1,39 @@
 
-.avatar {\n  z-index: 100;\n  text-align: center; }\n  .avatar img {\n    width: 260px;\n    height: 260px; }\n  .avatar .user-name {\n    max-width: 260px;\n    position: relative;\n    top: -50px;\n    color: white;\n    font-size: 25px;\n    text-shadow: 2px 2px black; }\n  .avatar .team-name {\n    max-width: 260px;\n    position: relative;\n    top: -45px;\n    color: white;\n    font-size: 15px;\n    text-shadow: 2px 2px black; }\n\n.avatar:after {\n  content: '';\n  position: absolute;\n  bottom: 0;\n  right: 10%;\n  height: 1px;\n  width: 80%;\n  background-color: rgba(180, 180, 180, 0.3); }\n", ""]);
+.avatar {
+  z-index: 100;
+  text-align: center;
+}
 
-// exports
+.avatar img {
+  width: 260px;
+  height: 260px;
+}
 
+.avatar .user-name {
+  max-width: 260px;
+  position: relative;
+  top: -50px;
+  color: white;
+  font-size: 25px;
+  text-shadow: 2px 2px black;
+}
 
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
+.avatar .team-name {
+  max-width: 260px;
+  position: relative;
+  top: -45px;
+  color: white;
+  font-size: 15px;
+  text-shadow: 2px 2px black;
+}
 
+.avatar:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 10%;
+  height: 1px;
+  width: 80%;
+  background-color: rgba(180, 180, 180, 0.3);
+}
 
-//////////////////
-// WEBPACK FOOTER
-// ./src/shared/components/sidebar/sidebar.component.scss
-// module id = 270
-// module chunks = 1

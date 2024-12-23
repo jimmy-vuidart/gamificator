@@ -1,15 +1,19 @@
 
-.card-stats .card-header img {\n  font-size: 36px;\n  line-height: 56px;\n  width: 56px;\n  height: 56px; }\n\n.card-skill {\n  height: 210px; }\n  .card-skill .card-content {\n    height: 122px; }\n\n.card-completed {\n  background-color: lightgreen; }\n", ""]);
+.card-stats .card-header img {
+  font-size: 36px;
+  line-height: 56px;
+  width: 56px;
+  height: 56px;
+}
 
-// exports
+.card-skill {
+  height: 210px;
+}
 
+.card-skill .card-content {
+  height: 122px;
+}
 
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-
-//////////////////
-// WEBPACK FOOTER
-// ./src/shared/components/quest-card/quest-card.component.scss
-// module id = 268
-// module chunks = 1
+.card-completed {
+  background-color: lightgreen;
+}

@@ -1,113 +1,113 @@
 <div id="home">
 
 
-    <div class="row" id="main-level">
-        <div class="col-md-12">
-            <div class="ct-chart" id="xpChart"></div>
-            <div class="level">Level {{currentLevel}}</div>
-            <div class="text-center">Expérience avant le niveau suivant : {{500 - ((currentXp) % 500)}}</div>
+  <div class="row" id="main-level">
+    <div class="col-md-12">
+      <div class="ct-chart" id="xpChart"></div>
+      <div class="level">Level {{ currentLevel }}</div>
+      <div class="text-center">Expérience avant le niveau suivant : {{ 500 - ((currentXp) % 500) }}</div>
+    </div>
+  </div>
+
+  <h2>Niveau de compétences</h2>
+
+  <div class="row" id="skills-level">
+    <div class="col-md-4" *ngFor="let skill of skills">
+      <skill [skill]="skill"></skill>
+    </div>
+  </div>
+
+  <h2>Statistiques</h2>
+
+  <div class="row">
+
+    <div class="col-lg-6 col-md-12">
+      <div class="card">
+        <div class="card-header" data-background-color="green">
+          <h4 class="title">Quêtes récentes accomplies</h4>
+          <p class="category">5 dernières quêtes</p>
         </div>
+        <div class="card-content table-responsive">
+          <table class="table table-hover">
+            <thead class="text-warning">
+            <tr>
+              <th>Quête</th>
+              <th>Terminée le</th>
+              <th>Expérience</th>
+              <th>Assignée à</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let quest of questsLatestCompleted | async">
+              <td>{{ quest.title }}</td>
+              <td>{{ quest.experience }}</td>
+              <td>{{ quest.completedOn | date:'dd/MM/yyyy HH:mm' }}</td>
+              <td>{{ quest.user || "Equipe" }}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
 
-    <h2>Niveau de compétences</h2>
-
-    <div class="row" id="skills-level">
-        <div class="col-md-4" *ngFor="let skill of skills">
-            <skill [skill]="skill"></skill>
+    <div class="col-lg-6 col-md-12">
+      <div class="card">
+        <div class="card-header" data-background-color="orange">
+          <h4 class="title">Quêtes récement assignés</h4>
+          <p class="category">5 dernières quêtes</p>
         </div>
+        <div class="card-content table-responsive">
+          <table class="table table-hover">
+            <thead class="text-warning">
+            <tr>
+              <th>Quête</th>
+              <th>Equipier</th>
+              <th>Expérience</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let quest of questsLatestAssigned | async">
+              <td>{{ quest.title }}</td>
+              <td>{{ quest.experience }}</td>
+              <td>{{ quest.user || "Equipe" }}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
 
-    <h2>Statistiques</h2>
+  </div>
 
-    <div class="row">
+  <div class="row">
 
-        <div class="col-lg-6 col-md-12">
-            <div class="card">
-                <div class="card-header" data-background-color="green">
-                    <h4 class="title">Quêtes récentes accomplies</h4>
-                    <p class="category">5 dernières quêtes</p>
-                </div>
-                <div class="card-content table-responsive">
-                    <table class="table table-hover">
-                        <thead class="text-warning">
-                        <tr>
-                            <th>Quête</th>
-                            <th>Terminée le</th>
-                            <th>Expérience</th>
-                            <th>Assignée à</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr *ngFor="let quest of questsLatestCompleted | async">
-                            <td>{{quest.title}}</td>
-                            <td>{{quest.experience}}</td>
-                            <td>{{quest.completedOn | date:'dd/MM/yyyy HH:mm'}}</td>
-                            <td>{{quest.user || "Equipe"}}</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header card-chart" data-background-color="orange">
+          <div class="ct-chart" id="completedTasksChart"></div>
         </div>
-
-        <div class="col-lg-6 col-md-12">
-            <div class="card">
-                <div class="card-header" data-background-color="orange">
-                    <h4 class="title">Quêtes récement assignés</h4>
-                    <p class="category">5 dernières quêtes</p>
-                </div>
-                <div class="card-content table-responsive">
-                    <table class="table table-hover">
-                        <thead class="text-warning">
-                        <tr>
-                            <th>Quête</th>
-                            <th>Equipier</th>
-                            <th>Expérience</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr *ngFor="let quest of questsLatestAssigned | async">
-                            <td>{{quest.title}}</td>
-                            <td>{{quest.experience}}</td>
-                            <td>{{quest.user || "Equipe"}}</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+        <div class="card-content">
+          <h4 class="title">Expérience mensuelle</h4>
+          <p class="category">2017</p>
         </div>
-
+      </div>
     </div>
 
-    <div class="row">
-
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header card-chart" data-background-color="orange">
-                    <div class="ct-chart" id="completedTasksChart"></div>
-                </div>
-                <div class="card-content">
-                    <h4 class="title">Expérience mensuelle</h4>
-                    <p class="category">2017</p>
-                </div>
-            </div>
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header card-chart" data-background-color="red">
+          <div class="ct-chart" id="everyoneChart"></div>
         </div>
-
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header card-chart" data-background-color="red">
-                    <div class="ct-chart" id="everyoneChart"></div>
-                </div>
-                <div class="card-content">
-                    <h4 class="title">Expérience mensuelle</h4>
-                    <p class="category">2017</p>
-                    <ul>
-                        <li style="color: orange">Roger LOOSER</li>
-                        <li style="color: green">Jimmy VUIDART</li>
-                        <li style="color: blue">Jack WINNER</li>
-                    </ul>
-                </div>
-            </div>
+        <div class="card-content">
+          <h4 class="title">Expérience mensuelle</h4>
+          <p class="category">2017</p>
+          <ul>
+            <li style="color: orange">Roger LOOSER</li>
+            <li style="color: green">Jimmy VUIDART</li>
+            <li style="color: blue">Jack WINNER</li>
+          </ul>
         </div>
+      </div>
     </div>
+  </div>
 </div>

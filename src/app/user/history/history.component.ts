@@ -1,14 +1,13 @@
-
-import {Component} from "@angular/core";
+import { Component } from '@angular/core'
 
 @Component({
-    selector: 'history',
-    templateUrl: 'history.component.html'
+  selector: 'history',
+  templateUrl: 'history.component.html',
+  standalone: false,
 })
 export class HistoryComponent {
 
 }
-
 
 
 // WEBPACK FOOTER //

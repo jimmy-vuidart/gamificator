@@ -1,66 +1,66 @@
 <div id="dashboard">
 
-    <div class="row" id="team-level">
-        <div class="col-md-12">
-            <level [experience]="(team | async)?.experience"></level>
+  <div class="row" id="team-level">
+    <div class="col-md-12">
+      <level [experience]="(team | async)?.experience"></level>
+    </div>
+  </div>
+
+  <div class="row">
+
+    <div class="col-lg-6 col-md-12">
+      <div class="card card-green">
+        <div class="card-header" data-background-color="green">
+          <h4 class="title">Quêtes récentes terminées par l'équipe</h4>
+          <p class="category">5 dernières quêtes</p>
         </div>
+        <div class="card-content table-responsive">
+          <table class="table table-hover">
+            <thead class="text-warning">
+            <tr>
+              <th>Quête</th>
+              <th>Assigné à</th>
+              <th>Expérience</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let quest of teamLatestDoneQuests | async">
+              <td>{{ quest.title }}</td>
+              <td>{{ quest.user || "Tous" }}</td>
+              <td>{{ quest.experience }}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
 
-    <div class="row">
-
-        <div class="col-lg-6 col-md-12">
-            <div class="card card-green">
-                <div class="card-header" data-background-color="green">
-                    <h4 class="title">Quêtes récentes terminées par l'équipe</h4>
-                    <p class="category">5 dernières quêtes</p>
-                </div>
-                <div class="card-content table-responsive">
-                    <table class="table table-hover">
-                        <thead class="text-warning">
-                        <tr>
-                            <th>Quête</th>
-                            <th>Assigné à</th>
-                            <th>Expérience</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr *ngFor="let quest of teamLatestDoneQuests | async">
-                            <td>{{quest.title}}</td>
-                            <td>{{quest.user || "Tous"}}</td>
-                            <td>{{quest.experience}}</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+    <div class="col-lg-6 col-md-12">
+      <div class="card">
+        <div class="card-header" data-background-color="orange">
+          <h4 class="title">Quêtes récentes assignées à l'équipe</h4>
+          <p class="category">5 dernières quêtes</p>
         </div>
-
-        <div class="col-lg-6 col-md-12">
-            <div class="card">
-                <div class="card-header" data-background-color="orange">
-                    <h4 class="title">Quêtes récentes assignées à l'équipe</h4>
-                    <p class="category">5 dernières quêtes</p>
-                </div>
-                <div class="card-content table-responsive">
-                    <table class="table table-hover">
-                        <thead class="text-warning">
-                        <tr>
-                            <th>Quête</th>
-                            <th>Assigné à</th>
-                            <th>Expérience</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr *ngFor="let quest of teamLatestQuests | async">
-                            <td>{{quest.title}}</td>
-                            <td>{{quest.user || "Equipe"}}</td>
-                            <td>{{quest.experience}}</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+        <div class="card-content table-responsive">
+          <table class="table table-hover">
+            <thead class="text-warning">
+            <tr>
+              <th>Quête</th>
+              <th>Assigné à</th>
+              <th>Expérience</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let quest of teamLatestQuests | async">
+              <td>{{ quest.title }}</td>
+              <td>{{ quest.user || "Equipe" }}</td>
+              <td>{{ quest.experience }}</td>
+            </tr>
+            </tbody>
+          </table>
         </div>
-
+      </div>
     </div>
+
+  </div>
 </div>
