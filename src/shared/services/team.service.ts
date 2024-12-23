@@ -7,7 +7,9 @@ import { QuestService } from './quest.service'
 import { SkillService } from './skill.service'
 import { UserService } from './user.service'
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class TeamService {
   constructor(private skillService: SkillService,
               private questService: QuestService,

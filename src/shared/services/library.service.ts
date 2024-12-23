@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core'
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class LibraryService {
 
   public static forEachKey(object: any, func: any) {

@@ -5,16 +5,17 @@ import { map } from 'rxjs'
 import { LibraryService } from '../../../shared/services/library.service'
 import { QuestService } from '../../../shared/services/quest.service'
 import { UserService } from '../../../shared/services/user.service'
+import { NgFor, AsyncPipe } from '@angular/common';
 
 interface IUser {
   name: string;
 }
 
 @Component({
-  selector: 'home',
-  templateUrl: 'home.component.html',
-  styleUrls: ['home.component.scss'],
-  standalone: false,
+    selector: 'home',
+    templateUrl: 'home.component.html',
+    styleUrls: ['home.component.scss'],
+    imports: [NgFor, AsyncPipe],
 })
 export class HomeComponent {
 

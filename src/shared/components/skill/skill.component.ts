@@ -3,10 +3,9 @@ import { PieChart } from 'chartist'
 import { LibraryService } from '../../services/library.service'
 
 @Component({
-  selector: 'skill',
-  templateUrl: 'skill.component.html',
-  styleUrls: ['skill.component.scss'],
-  standalone: false,
+    selector: 'skill',
+    templateUrl: 'skill.component.html',
+    styleUrls: ['skill.component.scss'],
 })
 export class SkillComponent {
 

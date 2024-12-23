@@ -3,7 +3,9 @@ import { CanActivate, Router } from '@angular/router'
 import { SecurityService } from './security.service'
 import { UserService } from './user.service'
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class LoginGuard implements CanActivate {
 
   constructor(private securityService: SecurityService, private userService: UserService, private router: Router) {

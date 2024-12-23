@@ -3,12 +3,19 @@ import { NotificationService } from '../../../shared/services/notification.servi
 import { QuestService } from '../../../shared/services/quest.service'
 import { SkillService } from '../../../shared/services/skill.service'
 import { TeamService } from '../../../shared/services/team.service'
+import { FormsModule } from '@angular/forms';
+import { NgIf, NgFor, AsyncPipe } from '@angular/common';
 
 @Component({
-  selector: 'quest-list',
-  templateUrl: 'quest-write.component.html',
-  styleUrls: ['quest-write.component.scss'],
-  standalone: false,
+    selector: 'quest-list',
+    templateUrl: 'quest-write.component.html',
+    styleUrls: ['quest-write.component.scss'],
+    imports: [
+        FormsModule,
+        NgIf,
+        NgFor,
+        AsyncPipe,
+    ],
 })
 export class QuestWriteComponent {
   public sendInProgress

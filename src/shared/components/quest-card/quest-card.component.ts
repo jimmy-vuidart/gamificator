@@ -1,11 +1,16 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
 import { UserService } from '../../services/user.service'
+import { NgClass, NgIf, DatePipe } from '@angular/common';
 
 @Component({
-  selector: 'quest-card',
-  templateUrl: 'quest-card.component.html',
-  styleUrls: ['quest-card.component.scss'],
-  standalone: false,
+    selector: 'quest-card',
+    templateUrl: 'quest-card.component.html',
+    styleUrls: ['quest-card.component.scss'],
+    imports: [
+        NgClass,
+        NgIf,
+        DatePipe,
+    ],
 })
 export class QuestCardComponent implements OnInit {
   @Input()

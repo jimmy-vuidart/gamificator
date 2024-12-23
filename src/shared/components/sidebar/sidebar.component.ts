@@ -2,16 +2,23 @@ import { Component, OnInit } from '@angular/core'
 import { Observable } from 'rxjs'
 import { MenuService } from '../../services/menu.service'
 import { UserService } from '../../services/user.service'
+import { NgFor, AsyncPipe } from '@angular/common';
+import { RouterLinkActive, RouterLink } from '@angular/router';
 
 declare var $: any
 
 declare function moveToActive();
 
 @Component({
-  selector: 'sidebar-cmp',
-  templateUrl: 'sidebar.component.html',
-  styleUrls: ['sidebar.component.scss'],
-  standalone: false,
+    selector: 'sidebar-cmp',
+    templateUrl: 'sidebar.component.html',
+    styleUrls: ['sidebar.component.scss'],
+    imports: [
+        NgFor,
+        RouterLinkActive,
+        RouterLink,
+        AsyncPipe,
+    ],
 })
 
 export class SidebarComponent implements OnInit {

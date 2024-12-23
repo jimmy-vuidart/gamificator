@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core'
 import { AngularFireDatabase } from '@angular/fire/compat/database'
 import { Observable } from 'rxjs'
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class SkillService {
   constructor(private database: AngularFireDatabase) {
   }

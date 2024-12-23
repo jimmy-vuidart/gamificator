@@ -1,0 +1,343 @@
+{
+  "skills": {
+    "0": {
+      "category": 1,
+      "icon": "java.png",
+      "name": "Java",
+      "teams": {
+        "Equipe BOULEAU": {
+          "experience": 999999
+        },
+        "Equipe DEVOOGHT": {
+          "experience": 5000
+        },
+        "Equipe MOUTON": {
+          "experience": 6650,
+          "members": {
+            "Bernard LAVAL": {
+              "experience": 1550
+            },
+            "Jimmy VUIDART": {
+              "experience": 2700
+            },
+            "Jonathan PROIETTO": {
+              "experience": 1700
+            },
+            "Julien MEYER": {
+              "experience": 1700
+            },
+            "Yannick FUSULIER": {
+              "experience": 2400
+            }
+          }
+        }
+      }
+    },
+    "1": {
+      "category": 1,
+      "icon": "csharp.png",
+      "name": "C#",
+      "teams": {
+        "Equipe DEVOOGHT": {
+          "experience": 800
+        },
+        "Equipe MOUTON": {
+          "experience": 7700,
+          "members": {
+            "Bastien LADRON": {
+              "experience": 200
+            },
+            "Jimmy VUIDART": {
+              "experience": 3500
+            },
+            "Jonathan PROIETTO": {
+              "experience": 2000
+            },
+            "Julien MEYER": {
+              "experience": 2000
+            }
+          }
+        }
+      }
+    },
+    "cdcd": {
+      "category": 1,
+      "icon": "docker.png",
+      "name": "DevOps",
+      "teams": {
+        "Equipe MOUTON": {
+          "experience": 1000,
+          "members": {
+            "Julien MEYER": {
+              "experience": 1000
+            }
+          }
+        }
+      }
+    }
+  },
+  "teams": {
+    "Equipe BOULEAU": {
+      "experience": 999999
+    },
+    "Equipe DEVOOGHT": {
+      "experience": 5800,
+      "quests": {
+        "0": {
+          "category": 1,
+          "completed": true,
+          "completedOn": 333333,
+          "createdOn": 30000000,
+          "experience": 60,
+          "skill": 0,
+          "title": "Devenir une équipe fun"
+        },
+        "-KigBNuh1ZRmJoRJkXPt": {
+          "category": 1,
+          "experience": 22,
+          "skill": "cdcd",
+          "title": "Faire du team building"
+        },
+        "zefzf": {
+          "category": 1,
+          "experience": 200,
+          "skill": "cdcd",
+          "title": "Découvrir le DevOps"
+        }
+      }
+    },
+    "Equipe MOUTON": {
+      "experience": 15350,
+      "quests": {
+        "-KigBNuh1ZRmJoRJkXPt": {
+          "category": 1,
+          "createdOn": 1261122030322,
+          "experience": 22,
+          "skill": "cdcd",
+          "title": "Faire du team building"
+        },
+        "zefzf": {
+          "category": 1,
+          "experience": 200,
+          "skill": "cdcd",
+          "title": "Découvrir le DevOps"
+        }
+      },
+      "skills": [
+        {
+          "experience": 900
+        }
+      ]
+    }
+  },
+  "users": {
+    "225644": {
+      "experience": 1550,
+      "name": "Bernard LAVAL",
+      "quests": {
+        "-KoHY-uHBWwTyqRsHuR9": {
+          "category": 1,
+          "createdOn": 1499254756048,
+          "experience": 440,
+          "skill": "0",
+          "title": "Découvrir l'API Spring",
+          "user": "225644"
+        }
+      },
+      "team": "Equipe MOUTON"
+    },
+    "349524": {
+      "experience": 5000,
+      "name": "Jonathan PROIETTO",
+      "team": "Equipe MOUTON"
+    },
+    "1111022": {
+      "experience": 9000,
+      "name": "Yannick FUSULIER",
+      "quests": [
+        {
+          "category": 1,
+          "createdOn": 22211111,
+          "experience": 300,
+          "skill": 0,
+          "title": "Lire le livre Java : pourquoi pas ?"
+        }
+      ],
+      "team": "Equipe MOUTON"
+    },
+    "2929102": {
+      "experience": 5000,
+      "job": "Développeur",
+      "name": "Julien MEYER",
+      "team": "Equipe MOUTON"
+    },
+    "J9h50QJILnYX0WyTMEHFq5lSyFj1": {
+      "admin": true,
+      "job": "Développeur",
+      "name": "Emmanuel MOUTON",
+      "team": "Equipe MOUTON"
+    },
+    "eeeeee": {
+      "experience": 4500,
+      "job": "Développeur",
+      "name": "Bastien LADRON",
+      "quests": {
+        "1": {
+          "category": 1,
+          "createdOn": 2555555555555,
+          "experience": 50,
+          "skill": 0,
+          "title": "Maveniser le projet"
+        },
+        "2": {
+          "category": 2,
+          "completedOn": 1496258575002,
+          "createdOn": 10101010,
+          "experience": 50,
+          "skill": 0,
+          "title": "Apprendre les streams"
+        },
+        "-Kl8ZJKVrJhUjOo9mZxL": {
+          "category": 1,
+          "createdOn": 1495882876404,
+          "experience": 999,
+          "skill": "0",
+          "title": "Valider la certification Java 12",
+          "user": "eeeeee"
+        },
+        "-KlZiuYpVSmp6HizN69b": {
+          "category": 1,
+          "createdOn": 1496338639711,
+          "experience": 250,
+          "skill": "0",
+          "title": "Obtenir la certification Java 12",
+          "user": "eeeeee"
+        },
+        "-KoJ-c-4xyeqn_yOUXE1": {
+          "category": 1,
+          "createdOn": 1499279294002,
+          "experience": 15000,
+          "skill": "1",
+          "title": "Le sfeir innovation challenge",
+          "user": "eeeeee"
+        }
+      },
+      "skills": {
+        "0": {
+          "experience": 6044,
+          "level": 3,
+          "xpCurrent": 1000,
+          "xpMax": 3000
+        },
+        "cdcd": {
+          "level": 5,
+          "xpCurrent": 1500,
+          "xpMax": 3000
+        }
+      },
+      "team": "Equipe MOUTON"
+    },
+    "i8dyhpW2kkhKBQsIGJYvmoJ18z22": {
+      "admin": true,
+      "experience": 8700,
+      "job": "Développeur",
+      "name": "Jimmy VUIDART",
+      "quests": {
+        "2": {
+          "category": 2,
+          "completedOn": 1496587885083,
+          "createdOn": 10101010,
+          "experience": 70,
+          "skill": 0,
+          "title": "Apprendre les streams"
+        },
+        "-Kig9L8UanjMIaTTKXES": {
+          "category": 1,
+          "completedOn": 1496587547966,
+          "createdOn": 1010101010,
+          "experience": 50,
+          "skill": 2,
+          "title": "Refactoriser le service des produits",
+          "user": "i8dyhpW2kkhKBQsIGJYvmoJ18z22"
+        },
+        "-KlKrebwKE5gRTc6S20e": {
+          "category": 1,
+          "completedOn": 1496591157142,
+          "createdOn": 44235266235,
+          "experience": 300,
+          "skill": "0",
+          "title": "Faire un SID sur Spring",
+          "user": "i8dyhpW2kkhKBQsIGJYvmoJ18z22"
+        },
+        "-KlQ3tkm6UGvl_iV-cet": {
+          "category": 2,
+          "completedOn": 1499279321588,
+          "createdOn": 1496176634331,
+          "experience": 900,
+          "skill": 0,
+          "title": "Obtenir la certification Java 8",
+          "user": "i8dyhpW2kkhKBQsIGJYvmoJ18z22"
+        },
+        "-KlQ72zSAARc3BtWO9Is": {
+          "category": 1,
+          "completedOn": 1496182972581,
+          "createdOn": 1496177462659,
+          "experience": 222,
+          "skill": "1",
+          "title": "Découvrir le C#",
+          "user": "i8dyhpW2kkhKBQsIGJYvmoJ18z22"
+        },
+        "-KlQSO_Pdc9-0fdjPGwD": {
+          "category": 1,
+          "createdOn": 1496183056109,
+          "experience": 150,
+          "skill": "1",
+          "title": "Découvrir EntityFramework",
+          "user": "i8dyhpW2kkhKBQsIGJYvmoJ18z22"
+        },
+        "-KlUxR8P0DnZA-kem5tZ": {
+          "category": 1,
+          "completedOn": 1496338677268,
+          "createdOn": 1496258560645,
+          "experience": 450,
+          "skill": "cdcd",
+          "title": "Mettre en place une architecture Docker",
+          "user": "i8dyhpW2kkhKBQsIGJYvmoJ18z22"
+        },
+        "-Kln_n1pdjZrw_1Wxd6l": {
+          "category": 1,
+          "completedOn": 1496587911383,
+          "createdOn": 1496587906963,
+          "experience": 200,
+          "skill": "cdcd",
+          "title": "\"Apprendre les commandes Linux de base",
+          "user": "i8dyhpW2kkhKBQsIGJYvmoJ18z22"
+        },
+        "-KlnhmP4vNFuz2ZO9ecb": {
+          "category": 1,
+          "completedOn": 1496849024554,
+          "createdOn": 1496590001507,
+          "experience": 500,
+          "skill": "0",
+          "title": "Faire le login sur le projet EPICNINJA",
+          "user": "i8dyhpW2kkhKBQsIGJYvmoJ18z22"
+        }
+      },
+      "skills": {
+        "0": {
+          "experience": 2070
+        },
+        "1": {
+          "experience": 222
+        },
+        "2": {
+          "experience": 50
+        },
+        "cdcd": {
+          "experience": 650
+        }
+      },
+      "team": "Equipe MOUTON"
+    }
+  }
+}

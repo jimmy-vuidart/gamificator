@@ -4,12 +4,18 @@ import { LibraryService } from '../../../shared/services/library.service'
 import { SkillService } from '../../../shared/services/skill.service'
 import { TeamService } from '../../../shared/services/team.service'
 import { UserService } from '../../../shared/services/user.service'
+import { NgFor, NgClass, NgIf, AsyncPipe } from '@angular/common';
 
 @Component({
-  selector: 'ladder',
-  templateUrl: 'ladder.component.html',
-  styleUrls: ['ladder.component.scss'],
-  standalone: false,
+    selector: 'ladder',
+    templateUrl: 'ladder.component.html',
+    styleUrls: ['ladder.component.scss'],
+    imports: [
+        NgFor,
+        NgClass,
+        NgIf,
+        AsyncPipe,
+    ],
 })
 export class LadderComponent {
   // Work value

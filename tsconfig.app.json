@@ -4,7 +4,8 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "./out-tsc/app",
-    "types": ["chartist"]
+    "types": ["chartist"],
+    "paths": { "@angular/*": [ "../node_modules/@angular/*" ] }
   },
   "files": [
     "src/main.ts"

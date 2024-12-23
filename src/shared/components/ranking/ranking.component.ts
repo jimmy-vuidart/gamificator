@@ -1,10 +1,9 @@
 import { Component, Input } from '@angular/core'
 
 @Component({
-  selector: 'ranking',
-  templateUrl: 'ranking.component.html',
-  styleUrls: ['ranking.component.scss'],
-  standalone: false,
+    selector: 'ranking',
+    templateUrl: 'ranking.component.html',
+    styleUrls: ['ranking.component.scss'],
 })
 export class RankingComponent {
   // Inputs

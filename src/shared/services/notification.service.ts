@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core'
 
 declare var $: any
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class NotificationService {
   public displayNotif(type: string, from: string, align: string, message: string) {
     $.notify({

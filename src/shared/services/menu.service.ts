@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core'
 import { map, Observable } from 'rxjs'
 import { UserService } from './user.service'
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class MenuService {
 
   private readonly ADMIN_ROUTES = [

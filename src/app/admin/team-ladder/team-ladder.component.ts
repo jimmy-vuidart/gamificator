@@ -6,12 +6,13 @@ import { LibraryService } from '../../../shared/services/library.service'
 import { SkillService } from '../../../shared/services/skill.service'
 import { TeamService } from '../../../shared/services/team.service'
 import { UserService } from '../../../shared/services/user.service'
+import { NgFor, AsyncPipe } from '@angular/common';
 
 @Component({
-  selector: 'team-ladder',
-  templateUrl: 'team-ladder.component.html',
-  styleUrls: ['team-ladder.component.scss'],
-  standalone: false,
+    selector: 'team-ladder',
+    templateUrl: 'team-ladder.component.html',
+    styleUrls: ['team-ladder.component.scss'],
+    imports: [NgFor, AsyncPipe],
 })
 export class TeamLadderComponent {
   // Template values

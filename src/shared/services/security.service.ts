@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core'
 import { AngularFireAuth } from '@angular/fire/compat/auth'
 import { map } from 'rxjs'
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class SecurityService {
 
   constructor(private auth: AngularFireAuth) {

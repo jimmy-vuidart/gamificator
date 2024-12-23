@@ -5,16 +5,23 @@ import { LibraryService } from '../../../shared/services/library.service'
 import { QuestService } from '../../../shared/services/quest.service'
 import { SkillService } from '../../../shared/services/skill.service'
 import { UserService } from '../../../shared/services/user.service'
+import { NgFor, AsyncPipe, DatePipe } from '@angular/common';
+import { SkillComponent } from '../../../shared/components/skill/skill.component';
 
 interface IUser {
   name: string;
 }
 
 @Component({
-  selector: 'team',
-  templateUrl: 'team.component.html',
-  styleUrls: ['team.component.scss'],
-  standalone: false,
+    selector: 'team',
+    templateUrl: 'team.component.html',
+    styleUrls: ['team.component.scss'],
+    imports: [
+        NgFor,
+        SkillComponent,
+        AsyncPipe,
+        DatePipe,
+    ],
 })
 export class TeamComponent {
 

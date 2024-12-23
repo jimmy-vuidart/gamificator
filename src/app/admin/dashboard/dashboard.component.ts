@@ -3,12 +3,18 @@ import { map, Observable } from 'rxjs'
 import { LibraryService } from '../../../shared/services/library.service'
 import { TeamService } from '../../../shared/services/team.service'
 import { UserService } from '../../../shared/services/user.service'
+import { LevelComponent } from '../../../shared/components/level/level.component';
+import { NgFor, AsyncPipe } from '@angular/common';
 
 @Component({
-  selector: 'dashboard',
-  templateUrl: 'dashboard.component.html',
-  styleUrls: ['dashboard.component.scss'],
-  standalone: false,
+    selector: 'dashboard',
+    templateUrl: 'dashboard.component.html',
+    styleUrls: ['dashboard.component.scss'],
+    imports: [
+        LevelComponent,
+        NgFor,
+        AsyncPipe,
+    ],
 })
 export class DashboardComponent {
   team: Observable<any>

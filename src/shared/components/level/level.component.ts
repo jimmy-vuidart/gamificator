@@ -3,10 +3,9 @@ import { PieChart } from 'chartist'
 import * as Chartist from 'chartist'
 
 @Component({
-  selector: 'level',
-  templateUrl: 'level.component.html',
-  styleUrls: ['level.component.scss'],
-  standalone: false,
+    selector: 'level',
+    templateUrl: 'level.component.html',
+    styleUrls: ['level.component.scss'],
 })
 export class LevelComponent {
 

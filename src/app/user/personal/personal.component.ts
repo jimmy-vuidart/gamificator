@@ -6,16 +6,23 @@ import { LibraryService } from '../../../shared/services/library.service'
 import { QuestService } from '../../../shared/services/quest.service'
 import { SkillService } from '../../../shared/services/skill.service'
 import { UserService } from '../../../shared/services/user.service'
+import { NgFor, AsyncPipe, DatePipe } from '@angular/common';
+import { SkillComponent } from '../../../shared/components/skill/skill.component';
 
 interface IUser {
   name: string;
 }
 
 @Component({
-  selector: 'personal',
-  templateUrl: 'personal.component.html',
-  styleUrls: ['personal.component.scss'],
-  standalone: false,
+    selector: 'personal',
+    templateUrl: 'personal.component.html',
+    styleUrls: ['personal.component.scss'],
+    imports: [
+        NgFor,
+        SkillComponent,
+        AsyncPipe,
+        DatePipe,
+    ],
 })
 export class PersonalComponent {
 

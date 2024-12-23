@@ -4,7 +4,9 @@ import { AngularFireDatabase } from '@angular/fire/compat/database'
 import { map, mergeMap, Observable, of, switchMap, take } from 'rxjs'
 import { LibraryService } from './library.service'
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class UserService {
 
   constructor(private database: AngularFireDatabase, private auth: AngularFireAuth) {

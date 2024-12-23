@@ -14,7 +14,9 @@ export interface IQuest {
   createdOn: number
 }
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class QuestService {
 
   constructor(private database: AngularFireDatabase,

@@ -5,12 +5,18 @@ import { QuestService } from '../../../shared/services/quest.service'
 import { SkillService } from '../../../shared/services/skill.service'
 import { TeamService } from '../../../shared/services/team.service'
 import { UserService } from '../../../shared/services/user.service'
+import { NgFor, AsyncPipe } from '@angular/common';
+import { QuestCardComponent } from '../../../shared/components/quest-card/quest-card.component';
 
 @Component({
-  selector: 'admin-quests',
-  templateUrl: 'admin-quests.component.html',
-  styleUrls: ['admin-quests.component.scss'],
-  standalone: false,
+    selector: 'admin-quests',
+    templateUrl: 'admin-quests.component.html',
+    styleUrls: ['admin-quests.component.scss'],
+    imports: [
+        NgFor,
+        QuestCardComponent,
+        AsyncPipe,
+    ],
 })
 export class AdminQuestComponent {
   teamName

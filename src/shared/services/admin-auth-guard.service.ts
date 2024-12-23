@@ -3,7 +3,9 @@ import { CanActivate, Router } from '@angular/router'
 import { map, Observable } from 'rxjs'
 import { UserService } from './user.service'
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class AdminAuthGuard implements CanActivate {
 
   constructor(private userService: UserService, private router: Router) {

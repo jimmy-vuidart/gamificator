@@ -1,13 +1,15 @@
 import { Component } from '@angular/core'
 import { Router } from '@angular/router'
 import { SecurityService } from '../../shared/services/security.service'
+import { FormsModule } from '@angular/forms';
+import { LoadingComponent } from '../../shared/components/loading/loading.component';
 
 
 @Component({
-  selector: 'login',
-  templateUrl: 'login.component.html',
-  styleUrls: ['login.component.scss'],
-  standalone: false,
+    selector: 'login',
+    templateUrl: 'login.component.html',
+    styleUrls: ['login.component.scss'],
+    imports: [FormsModule, LoadingComponent],
 })
 export class LoginComponent {
 

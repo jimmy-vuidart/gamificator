@@ -22,10 +22,9 @@ const MODULES = [
 ]
 
 @NgModule({
-  declarations: MODULES,
-  imports: [CommonModule, BrowserModule, RouterModule, FormsModule],
-  exports: MODULES,
-  providers: [],
+    imports: [CommonModule, BrowserModule, RouterModule, FormsModule, ...MODULES],
+    exports: MODULES,
+    providers: [],
 })
 export class ComponentsModule {
 

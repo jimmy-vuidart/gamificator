@@ -5,9 +5,8 @@ import { SecurityService } from '../../services/security.service'
 import { UserService } from '../../services/user.service'
 
 @Component({
-  selector: 'navbar-cmp',
-  templateUrl: 'navbar.component.html',
-  standalone: false,
+    selector: 'navbar-cmp',
+    templateUrl: 'navbar.component.html',
 })
 
 export class NavbarComponent implements OnInit {

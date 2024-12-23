@@ -5,12 +5,18 @@ import { LibraryService } from '../../../shared/services/library.service'
 import { QuestService } from '../../../shared/services/quest.service'
 import { SkillService } from '../../../shared/services/skill.service'
 import { UserService } from '../../../shared/services/user.service'
+import { NgFor, AsyncPipe } from '@angular/common';
+import { QuestCardComponent } from '../../../shared/components/quest-card/quest-card.component';
 
 @Component({
-  selector: 'quests',
-  templateUrl: 'quests.component.html',
-  styleUrls: ['quests.component.scss'],
-  standalone: false,
+    selector: 'quests',
+    templateUrl: 'quests.component.html',
+    styleUrls: ['quests.component.scss'],
+    imports: [
+        NgFor,
+        QuestCardComponent,
+        AsyncPipe,
+    ],
 })
 export class QuestComponent {
 
