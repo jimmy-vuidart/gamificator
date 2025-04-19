@@ -6,4 +6,4 @@ Compete with other teams in your company for the best scores !
 
 ## Showcase
 
-(https://github.com/jimmy-vuidart/gamificator/blob/master/showcase/Gamificator.mp4)[Video demonstration]
+[Video demonstration](https://github.com/jimmy-vuidart/gamificator/blob/master/showcase/Gamificator.mp4)
